@@ -37,7 +37,27 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size();
+        int n = nums2.size();
         
+        if((m+n)%2) return find_kth_number(nums1,0,nums2,0,(m+n)/2+1);
+        else return (find_kth_number(nums1,0,nums2,0,(m+n)/2)+find_kth_number(nums1,0,nums2,0,(m+n)/2+1))/2.0;
+    }
+
+    double find_kth_number(vector<int>& nums1, int st1, vector<int>& nums2, int st2, int k)
+    {
+        if(st1>=nums1.size())   return nums2[st2 + k-1];
+        if(st2>=nums2.size())   return nums1[st1 + k-1];
+        
+        if(k==1)    return min(nums1[st1],nums2[st2]);
+
+        int num1 = 1e9+7;
+        int num2 = 1e9+7;
+        if(k/2-1+st1<nums1.size()) num1 = nums1[st1 + k/2-1];
+        if(k/2-1+st2<nums2.size()) num2 = nums2[st2 + k/2-1];
+
+        if(num1<num2)   return find_kth_number(nums1,st1+k/2,nums2,st2,k-k/2);
+        else return find_kth_number(nums1,st1,nums2,st2+k/2,k-k/2);
     }
 };
 
