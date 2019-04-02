@@ -1,6 +1,7 @@
 # Cracking the Offer
 
 [selected quick solutions](https://github.com/LFhase/Algorithm/blob/master/selected_solution_record.md)
+
 [selected interview problem solutions](https://github.com/LFhase/Algorithm/blob/master/selected_interview_problems.md)
 
 # Some quick links for detailed tutorials 
