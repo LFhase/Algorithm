@@ -14,8 +14,6 @@
 
 数组中有一个数仅出现了一次，剩下的出现了两次，求出这个仅出现一次的数
 
-数组中有两个数仅出现了一次，剩下的出现了两次，求出这个仅出现一次的数
-
 ***solution***：
 
 xor
@@ -26,18 +24,16 @@ xor
 
 
 
-### 2. Digit with only one appearance
+### 2. Next Permutation
 
-***tag***：Algorithm
+***tag***：Algorithm, Leetcode 31
 
 ***statement***：
 
-数组中有一个数仅出现了一次，剩下的出现了两次，求出这个仅出现一次的数
-
-数组中有两个数仅出现了一次，剩下的出现了两次，求出这个仅出现一次的数
+Implement **next permutation**
 
 ***solution***：
 
-xor
+倒序找出最后一个出现$num_i < num_{i+1}$的点，找出i+1之后最小的数与$num_i$互换
 
 ***remark***：
