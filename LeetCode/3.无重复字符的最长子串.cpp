@@ -39,7 +39,6 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-
         int res = 0;
         int last = 0;
         int mk[200];
