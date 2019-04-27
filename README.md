@@ -6,3 +6,6 @@
 
 # Some quick links for detailed tutorials 
 (Chinese)[Kick Start 2019 Round A Problem C. Contention](https://blog.csdn.net/Lfhase/article/details/88823761)
+
+
+todo: [MS100](https://blog.csdn.net/v_JULY_v/article/details/6057286)
