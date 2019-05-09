@@ -57,3 +57,6 @@ Newton' method can be used to maximize/minimize the loss.
 展开方差公式，使得只需要遍历一遍文本即可完成
 
 ***remark***：
+
+
+

@@ -84,3 +84,21 @@ $O(n\sqrt(n))$ 分解因数
 ***remark***：
 
 2019 MS 工程院三面=、=跪了
+
+
+
+### 5. Merge K Sorted Lists
+
+***tag***：Algorithm, LeetCode 23
+
+***statement***：
+
+Merge *k* sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+
+***solution***：
+
+用第一个与后面的k-1个合并就好了，复杂度O(k*len)
+
+***remark***：
+
+MS一面=、=我为什么要写堆呢
