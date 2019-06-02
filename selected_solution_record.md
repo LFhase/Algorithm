@@ -102,3 +102,23 @@ Merge *k* sorted linked lists and return it as one sorted list. Analyze and desc
 ***remark***：
 
 MS一面=、=我为什么要写堆呢
+
+
+
+### 6. Jumping Cows
+
+***tag***：Algorithm, POJ 2181
+
+***statement***：
+
+按顺序取给定序列中子序列，按奇数位加，偶数位减，的原则计算和，求最大和
+
+***solution***：
+
+DP
+
+两个变量分别记录前i个操作偶数次、奇数次最大和，互相转移即可。
+
+***remark***：
+
+有点巧妙
