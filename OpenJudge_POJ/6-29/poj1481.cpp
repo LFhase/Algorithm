@@ -30,7 +30,7 @@ using namespace std;
 #define TCASE(T)    cin>>T;while(T--)
 
 
-const int MAXN = 100005;
+const int MAXN = 55;
 const ll MOD = 1e9+7  ;
 const ll LINF = 0x3f3f3f3f3f3f3f3f;
 const int INF = 1e9+7;
@@ -41,24 +41,60 @@ int _;
 
 using namespace std;
 
+char mapp[MAXN][MAXN];
+int w, h;
+vector<int> res;
+
+void get_rid_x(int x, int y)
+{
+    mapp[x][y] = '*'; 
+    if(x-1>=0&&mapp[x-1][y]=='X')   get_rid_x(x-1,y);
+    if(x+1<h&&mapp[x+1][y]=='X')    get_rid_x(x+1,y);
+    if(y-1>=0&&mapp[x][y-1]=='X')   get_rid_x(x,y-1);
+    if(y+1<w&&mapp[x][y+1]=='X')    get_rid_x(x,y+1);
+}
+
+int rua(int x, int y)
+{
+    int cnt = 0;
+    if(mapp[x][y]=='X') 
+    {
+        cnt++;
+        get_rid_x(x,y);
+    }
+    mapp[x][y] = '.';
+    if(x-1>=0&&mapp[x-1][y]!='.')   cnt+=rua(x-1,y);
+    if(x+1<h&&mapp[x+1][y]!='.')    cnt+=rua(x+1,y);
+    if(y-1>=0&&mapp[x][y-1]!='.')   cnt+=rua(x,y-1);
+    if(y+1<w&&mapp[x][y+1]!='.')    cnt+=rua(x,y+1);
+    return cnt;
+}
 
 int main()
 {
-    int T;
-    cin>>T;
-    int odd_ans = 0;
-    int even_ans = 0;
-    while(T--)
+    int tt = 0;
+    while(scanf("%d%d",&w,&h)!=EOF)
     {
-        int tmp;
-        cin>>tmp;
-        int n_odd = odd_ans;
-        int n_even = even_ans;
-        if(even_ans+tmp>odd_ans)    n_odd = even_ans+tmp;
-        if(odd_ans-tmp>even_ans)    n_even = odd_ans-tmp;
-        odd_ans = n_odd;
-        even_ans = n_even;
+        tt++;
+        res.clear();
+        if(w==0&&h==0)  break;
+        for(int i=0;i<h;++i)    scanf("%s",mapp[i]);
+        for(int i=0;i<h;++i)
+            for(int j=0;j<w;++j)
+                if(mapp[i][j]!='.') 
+                {
+                    int rt = rua(i,j);
+                    if(rt)  res.push_back(rt);
+                }
+        sort(res.begin(),res.end());
+        printf("Throw %d\n",tt);
+        for(int i=0;i<res.size();++i)
+        {
+            printf("%d",res[i]);
+            if(i+1<res.size())  printf(" ");
+            else printf("\n\n");
+        }
+        
     }
-    cout<<(max(odd_ans,even_ans))<<endl;
     return 0;
 }
