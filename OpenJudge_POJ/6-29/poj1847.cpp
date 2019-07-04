@@ -30,7 +30,7 @@ using namespace std;
 #define TCASE(T)    cin>>T;while(T--)
 
 
-const int MAXN = 100005;
+const int MAXN = 105;
 const ll MOD = 1e9+7  ;
 const ll LINF = 0x3f3f3f3f3f3f3f3f;
 const int INF = 1e9+7;
@@ -41,24 +41,51 @@ int _;
 
 using namespace std;
 
+vector<int> G[MAXN];
+int mk[MAXN];
+int N;
+int st, ed;
+int res;
+
+void dfs(int u, int cost)
+{
+    if(mk[u])   return;
+    if(u==ed)   
+    {
+        res = min(res,cost);
+        return;
+    }
+    if(cost>res) return;
+    mk[u] = 1;
+    for(int i=0;i<G[u].size();++i)
+    {
+        dfs(G[u][i],cost+(i!=0));
+    }
+    mk[u] = 0;
+}
+
 
 int main()
 {
-    int T;
-    cin>>T;
-    int odd_ans = 0;
-    int even_ans = 0;
-    while(T--)
+    while(scanf("%d%d%d",&N,&st,&ed)!=EOF)
     {
-        int tmp;
-        cin>>tmp;
-        int n_odd = odd_ans;
-        int n_even = even_ans;
-        if(even_ans+tmp>odd_ans)    n_odd = even_ans+tmp;
-        if(odd_ans-tmp>even_ans)    n_even = odd_ans-tmp;
-        odd_ans = n_odd;
-        even_ans = n_even;
-    }
-    cout<<(max(odd_ans,even_ans))<<endl;
+        for(int i=1;i<=N;++i)
+        {
+            G[i].clear();
+            int K;
+            scanf("%d",&K);
+            int tmp;
+            for(int j=1;j<=K;++j)
+            {
+                scanf("%d",&tmp);
+                G[i].push_back(tmp);
+            }
+        }
+        memset(mk,0,sizeof(mk));
+        res = 1e9+7;
+        dfs(st,0);
+        if(res==1e9+7)  res=-1;
+        printf("%d\n",res);
+    }   
     return 0;
 }
