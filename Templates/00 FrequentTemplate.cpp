@@ -134,3 +134,45 @@ ll powermod(ll n,ll k, ll MOD)
     }
     return ans;
 }
+
+
+// solve the equation: ax+by = gcd(a,b)
+// return gcd(a,b)
+int exgcd(int a, int b, int& x, int& y)
+{
+    int d = a;
+    if(b!=0)
+    {
+        d = exgcd(b,a%b,y,x);
+        y -= (a/b)*x;
+    }
+    else
+    {
+        x = 1;
+        y = 0;
+    }
+
+    return d;
+}
+
+// judge primes <= N
+// return number of primes
+// O(NlogNlogN)
+int prime[MAXN];
+bool is_prime[MAXN];
+
+int sieve(int N)
+{
+    int p = 0;
+    for(int i=0;i<=n;++i)   is_prime[i] = true;
+    is_prime[0] = is_prime[1] = false;
+    for(int i=2;i<=n;++i)
+    {
+        if(is_prime[i])
+        {
+            prime[p++] = i;
+            for(int j=2*i;j<=n;j+=i)    is_prime[j]=false;
+        }
+    }
+    return p;
+}
